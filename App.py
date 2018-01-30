@@ -9,13 +9,13 @@ from datetime import datetime
 import numpy as np
 import pandas as pd
 
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template, request, flash, redirect
 
 
 #################################################
 # Database Setup
 #################################################
-engine = create_engine("sqlite:///belly_button_biodiversity.sqlite", echo=False)
+engine = create_engine("sqlite:///DataSets/belly_button_biodiversity.sqlite", echo=False)
 
 # reflect an existing database into a new model
 Base = automap_base()
@@ -41,16 +41,17 @@ app = Flask(__name__)
 #################################################
 # Return the dashboard homepage
 @app.route("/")
-def welcome():
+def index():
     return render_template("index.html")
 
 # return List of sample names
 @app.route('/names')
-def sample_name():
+def names():
+   
     sampleId_result=Samples.__table__.columns.keys()
     sampleId_result.pop(0)
     return jsonify(sampleId_result)
-
+    
 
 # return List of OTU descriptions
 @app.route('/otu')
@@ -94,31 +95,31 @@ def metadata(sample):
 # return Weekly Washing Frequency as a number
 @app.route('/wfreq/<sample>')
 def wfreq(sample):
-    WQREF_results= session.query(Samples_metadata.SAMPLEID, Samples_metadata.WFREQ).all()
+    WFREQ_results= session.query(Samples_metadata.SAMPLEID, Samples_metadata.WFREQ).all()
     
-    WQREF_list= []
-    for result in WQREF_results:
-        row = {"SAMPLEID":"WQREF"}
+    WFREQ_list= []
+    for result in WFREQ_results:
+        row = {"SAMPLEID":"WFREQ"}
         row["SAMPLEID"] = result[0]
-        row["WQREF"] = result[1]
-        WQREF_list.append(row)
+        row["WFREQ"] = result[1]
+        WFREQ_list.append(row)
     
     i=0
-    sample_WQREF=[]
-    for i in range(0,len(WQREF_list)): 
-        if sample == "BB_"+ str(WQREF_list[i]['SAMPLEID']) :
-            one_sample_WQREF = WQREF_list[i]
-            sample_WQREF.append(one_sample_WQREF)
+    sample_WFREQ=[]
+    for i in range(0,len(WFREQ_list)): 
+        if sample == "BB_"+ str(WFREQ_list[i]['SAMPLEID']) :
+            one_sample_WFREQ = WFREQ_list[i]
+            sample_WFREQ.append(one_sample_WFREQ)
         else: 
             i+= 1
             
-    return jsonify(sample_WQREF)
+    return jsonify(sample_WFREQ)
 
 # return OTU IDs and Sample Values for a given sample.
 @app.route('/samples/<sample>')
-def sample_value(sample):
+def samples(sample):
             
-    df_data = pd.read_csv("belly_button_biodiversity_samples.csv")
+    df_data = pd.read_csv("DataSets/belly_button_biodiversity_samples.csv")
     sampleId_result=Samples.__table__.columns.keys()
     sampleId=sampleId_result.pop(0)
     
