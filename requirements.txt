@@ -1,26 +1,9 @@
 
-anaconda-client==1.6.5
-anaconda-navigator==1.6.9
-anaconda-project==0.8.0
-
-beautifulsoup4==4.6.0
 
 click==6.7
 
-conda==4.3.30
-conda-build==3.0.27
-conda-verify==2.0.0
-contextlib2==0.5.5
-cryptography==2.0.3
-cycler==0.10.0
-Cython==0.26.1
-cytoolz==0.8.2
-
-distlib==0.2.5
-distributed==1.19.1
-
 Flask==0.12.2
-Flask-Cors==3.0.3
+
 Flask-PyMongo==0.5.1
 
 gunicorn==19.7.1
