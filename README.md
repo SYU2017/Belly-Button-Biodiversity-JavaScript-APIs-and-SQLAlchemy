@@ -5,10 +5,10 @@ Create Flask API to serve the HTML and JavaScript required for dashboard page an
 
 In this assignment, you will build an interactive dashboard to explore the [Belly Button Biodiversity DataSet](http://robdunnlab.com/projects/belly-button-biodiversity/).
 
-![picture](image1/image1.png)
+![picture](image/image1.png)
 
 
-![picture](image2/image1.png)
+![picture](image/image2.png)
 
 
 ## Step 1 - Flask API
