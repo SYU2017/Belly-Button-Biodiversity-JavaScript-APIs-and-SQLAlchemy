@@ -89,7 +89,7 @@ def metadata(sample):
         else: 
             i+= 1
 
-    return jsonify(sample_metadata)
+    return jsonify(sample_metadata[0])
 
 
 # return Weekly Washing Frequency as a number
@@ -126,7 +126,7 @@ def samples(sample):
     sample_value_list=[]
     for sample_id in sampleId_result:
         sample_value_dict={}
-        sample_df = df_data.sort_values(sample_id, ascending=False)
+        sample_df = df_data.sort_values(sample_id, ascending=False).fillna(0)
         otu_id= sample_df["otu_id"].tolist()
         sample_value= sample_df[sample_id].tolist()   
         sample_value_dict= {sample_id: {"otu_ids": otu_id, "sample_values": sample_value}}
