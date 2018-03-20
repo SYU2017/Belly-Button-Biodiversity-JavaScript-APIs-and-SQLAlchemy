@@ -1,4 +1,4 @@
-# Week15-JavaScript-APIs-and-SQLAlchemy
+# JavaScript-APIs-and-SQLAlchemy
 Create Flask API to serve the HTML and JavaScript required for dashboard page and Plotly.js to build interactive charts for dashboard.
 
 # Belly Button Biodiversity
