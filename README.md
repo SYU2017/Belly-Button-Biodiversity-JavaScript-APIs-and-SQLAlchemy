@@ -3,7 +3,7 @@ Create Flask API to serve the HTML and JavaScript required for dashboard page an
 
 # Belly Button Biodiversity
 
-https://belly-button-biodiversity-2018.herokuapp.com/
+# https://belly-button-biodiversity-2018.herokuapp.com/
 
 
 In this assignment, I will build an interactive dashboard to explore the [Belly Button Biodiversity DataSet](http://robdunnlab.com/projects/belly-button-biodiversity/).
